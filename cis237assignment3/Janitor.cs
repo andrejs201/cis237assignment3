@@ -20,7 +20,18 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
+            JanitorCalculate(this.trashCompactor, this.vacuum);
+            base.CalculateTotalCost();
+        }
 
+        private double JanitorCalculate(bool trashCompactor, bool vacuum)
+        {
+            double temp = 0;
+            if (trashCompactor)
+                temp += 1;
+            if (vacuum)
+                temp += 1;
+            return temp;
         }
 
         public override string ToString()

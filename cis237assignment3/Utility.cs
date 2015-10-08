@@ -22,7 +22,20 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            
+            UtilityCalculate(this.toolbox, this.computerConnection, this.arm);
+            base.CalculateTotalCost();
+        }
+
+        private double UtilityCalculate(bool toolBox, bool computerConnection, bool arm)
+        {
+            double temp = 0;
+            if (toolBox)
+                temp += 1;
+            if (computerConnection)
+                temp += 1;
+            if (arm)
+                temp += 1;
+            return temp;
         }
 
         public override string ToString()

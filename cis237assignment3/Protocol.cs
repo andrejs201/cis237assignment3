@@ -16,9 +16,22 @@ namespace cis237assignment3
             this.numberLanguages = numberLanguages;
         }
 
-        public override void CalculateTotalCost()
+        protected void CalculateTotalCost()
         {
+            totalCost += ProtocolCalculate(this.numberLanguages);
+            base.CalculateTotalCost();
+        }
 
+        private double ProtocolCalculate(int numberLanguages)
+        {
+            if (numberLanguages < 10)
+                return 1;
+            else if (numberLanguages < 50)
+                return 2;
+            else if (numberLanguages < 100)
+                return 3;
+            else
+                return 4;
         }
 
         public override string ToString()

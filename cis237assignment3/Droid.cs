@@ -23,7 +23,32 @@ namespace cis237assignment3
             this.color = color;
         }
 
-        public abstract void CalculateTotalCost();
+        abstract void CalculateTotalCost();
+
+        protected void CalculateBaseCost(string material)
+        {
+            switch (material.ToLower())
+            {
+                case "1":
+                    baseCost = 1;
+                    break;
+
+                case "2":
+                    baseCost = 2;
+                    break;
+
+                case "3":
+                    baseCost = 3;
+                    break;
+
+                case "4":
+                    baseCost = 4;
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
         public override string ToString()
         {
