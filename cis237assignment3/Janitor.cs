@@ -36,7 +36,14 @@ namespace cis237assignment3
 
         public override string ToString()
         {
-            return base.ToString();
+            string tempString = base.ToString();
+            if (this.trashCompactor || this.vacuum)
+                tempString += Environment.NewLine + "Janitor Features:";
+            if (this.trashCompactor)
+                tempString += " trash compactor";
+            if (this.vacuum)
+                tempString += " vacuum";
+            return tempString;
         }
     }
 }

@@ -9,9 +9,9 @@ namespace cis237assignment3
     class Astromech : Utility
     {
         protected bool fireExtinguisher;
-        protected bool numberShips;
+        protected int numberShips;
 
-        public Astromech(string material, string model, string color, bool toolbox, bool computerConnection, bool arm, bool fireExtinguisher, bool numberShips) 
+        public Astromech(string material, string model, string color, bool toolbox, bool computerConnection, bool arm, bool fireExtinguisher, int numberShips) 
             : base( material, model, color, toolbox, computerConnection, arm)
         {
             this.fireExtinguisher = fireExtinguisher;
@@ -24,19 +24,23 @@ namespace cis237assignment3
             base.CalculateTotalCost();
         }
 
-        private double AstromechCalculate(bool fireExtinguisher, bool numberShips)
+        private double AstromechCalculate(bool fireExtinguisher, int numberShips)
         {
             double temp = 0;
             if (fireExtinguisher)
                 temp += 1;
-            if (numberShips)
-                temp += 1;
+            temp += this.numberShips;
             return temp;
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            string tempString = base.ToString();
+            tempString += Environment.NewLine + "Astromech Features:";
+            if (this.fireExtinguisher)
+                tempString += " fire extinguisher";
+            tempString += " number of ships: " + this.numberShips;
+            return tempString;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace cis237assignment3
             this.color = color;
         }
 
-        abstract void CalculateTotalCost();
+        public abstract void CalculateTotalCost();
 
         protected void CalculateBaseCost(string material)
         {
@@ -52,7 +52,9 @@ namespace cis237assignment3
 
         public override string ToString()
         {
-            return base.ToString();
+            string tempString = Environment.NewLine + this.model + " " + this.color + " " + this.material;
+
+            return tempString;
         }
     }
 }

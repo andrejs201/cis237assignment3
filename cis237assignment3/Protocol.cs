@@ -16,10 +16,11 @@ namespace cis237assignment3
             this.numberLanguages = numberLanguages;
         }
 
-        protected void CalculateTotalCost()
+        public override void CalculateTotalCost()
         {
             totalCost += ProtocolCalculate(this.numberLanguages);
-            base.CalculateTotalCost();
+            base.CalculateBaseCost(this.material);
+            
         }
 
         private double ProtocolCalculate(int numberLanguages)
@@ -36,7 +37,11 @@ namespace cis237assignment3
 
         public override string ToString()
         {
-            return base.ToString();
+
+            string tempString = base.ToString();
+            tempString += Environment.NewLine + "languages known: " + this.numberLanguages;
+            return tempString;
+            
         }
     }
 }

@@ -22,8 +22,8 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            UtilityCalculate(this.toolbox, this.computerConnection, this.arm);
-            base.CalculateTotalCost();
+            totalCost += UtilityCalculate(this.toolbox, this.computerConnection, this.arm);
+            base.CalculateBaseCost(this.material);
         }
 
         private double UtilityCalculate(bool toolBox, bool computerConnection, bool arm)
@@ -40,7 +40,16 @@ namespace cis237assignment3
 
         public override string ToString()
         {
-            return base.ToString();
+            string tempString = base.ToString();
+            if (this.toolbox || this.computerConnection || this.arm)
+                tempString += Environment.NewLine + "Features:";
+            if (this.toolbox)
+                tempString += " toolbox";
+            if (this.computerConnection)
+                tempString += " computer connection";
+            if (this.arm)
+                tempString += " computer screen";
+            return tempString;
         }
     }
 }
