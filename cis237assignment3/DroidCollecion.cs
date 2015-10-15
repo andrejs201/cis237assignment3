@@ -36,6 +36,27 @@ namespace cis237assignment3
             }
         }
 
+        public string PrintArray()
+        {
+            string tempString = "";
+            if (arrayLength == 0)
+            {
+                tempString = Environment.NewLine + "There are no droids in the array" + Environment.NewLine;
+            }
+            else
+            {
+                for (int i = 0; i < arrayLength; i++)
+                {
+                    if (droidArray[i] != null)
+                    {
+                        tempString += droidArray[i].ToString();
+                    }
+                }
+            }
+
+            return tempString;
+        }
+
 
     }
 }

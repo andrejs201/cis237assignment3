@@ -13,29 +13,46 @@ namespace cis237assignment3
             bool exitCondition = false;
             int selectionInt;
             UserInterface ui = new UserInterface();
+            DroidCollecion dc = new DroidCollecion();
 
-            while (!exitCondition)
+            while (!exitCondition)  //main program loop
             {
                 ui.DisplayMenu();
-                selectionInt = Convert.ToInt32(ui.ReadLine());
-                switch (selectionInt)
+                try     //catches letters entered into the console
                 {
-                    case 0:     //Exit program
-                        exitCondition = true;
-                        break;
+                    selectionInt = Convert.ToInt32(ui.ReadLine());
+                    switch (selectionInt)
+                    {
+                        case 0:     //Exit program
+                            exitCondition = true;
+                            break;
 
-                    case 1:     //Add droid
+                        case 1:     //Add droid
+                            AddDroid();
+                            break;
 
-                        break;
+                        case 2:     //print droid list
+                            ui.Print(dc.PrintArray());
+                            break;
 
-                    case 2:     //print droid list
-
-                        break;
-
-                    default:
-                        break;
+                        default:    //catches numbers not used
+                            ui.ErrorMessage2();
+                            break;
+                    }
                 }
+                catch
+                {
+                    ui.Print(Environment.NewLine + "Enter a number Please." + Environment.NewLine);
+                }
+                
             }
+
+            
+        }
+
+        private static void AddDroid()
+        {
+
         }
     }
 }

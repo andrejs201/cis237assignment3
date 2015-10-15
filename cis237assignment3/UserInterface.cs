@@ -17,14 +17,34 @@ namespace cis237assignment3
             return Console.ReadLine();
         }
 
-        public string DisplayMenu()
+        public void Print(string tempString)
         {
-            return "Exit: 0" + Environment.NewLine + "Add a new droid: 1" + Environment.NewLine + "Print droid list: 2";
+            Console.WriteLine(tempString);
+        }
+
+        public void DisplayMenu()
+        {
+            Print("-------Main-Menu-------" + Environment.NewLine + "Exit: 0" + Environment.NewLine + "Add a new droid: 1" + Environment.NewLine + "Print droid list: 2" + Environment.NewLine + "-----------------------");
         }
 
         public string PrintDroidList()
         {
             return "";
+        }
+
+        public void ErrorMessage()
+        {
+            Print(Environment.NewLine + "Enter a number please." + Environment.NewLine);
+        }
+
+        public void ErrorMessage2()
+        {
+            Print(Environment.NewLine + "Enter a correct number." + Environment.NewLine);
+        }
+
+        public void DroidType()
+        {
+            Print(Environment.NewLine + "Astromech: 1" + Environment.NewLine + "Janitor: 2" + Environment.NewLine + "Protocol: 3");
         }
     }
 }
