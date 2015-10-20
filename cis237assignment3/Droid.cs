@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Andrejs Tomsons
+//CIS 237 Assignment 3
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +17,11 @@ namespace cis237assignment3
         protected double baseCost;
         protected double totalCost;
 
-        public decimal TotalCost { get; set; }
+        public decimal TotalCost
+        {
+            get { return Convert.ToDecimal(this.totalCost); }
+            set { this.totalCost = Convert.ToDouble(value); }
+        }
 
         public Droid(string material, string model, string color)
         {
@@ -25,24 +32,24 @@ namespace cis237assignment3
 
         public abstract void CalculateTotalCost();
 
-        protected void CalculateBaseCost(string material)
+        protected void CalculateBaseCost(string material)   //Give a value based on the material
         {
             switch (material.ToLower())
             {
                 case "1":
-                    baseCost = 1;
+                    baseCost = 100;
                     break;
 
                 case "2":
-                    baseCost = 2;
+                    baseCost = 200;
                     break;
 
                 case "3":
-                    baseCost = 3;
+                    baseCost = 400;
                     break;
 
                 case "4":
-                    baseCost = 4;
+                    baseCost = 1000;
                     break;
 
                 default:
@@ -50,11 +57,32 @@ namespace cis237assignment3
             }
         }
 
-        public override string ToString()
+        public override string ToString()   //The base ToString where all the other ToStrings end up.
         {
-            string tempString = Environment.NewLine + this.model + " " + this.color + " " + this.material;
+            string tempString = "Model: " + this.model + Environment.NewLine + "Color: " + this.color + Environment.NewLine + "Material: " + MaterialTranslator(this.material);
 
             return tempString;
+        }
+
+        private string MaterialTranslator(string material)  //translates the material integer into the actual material type
+        {
+            switch (material)
+            {
+                case "1":
+                    return "Metal";
+
+                case "2":
+                    return "More expensive metal";
+
+                case "3":
+                    return "Even more expensive metal";
+
+                case "4":
+                    return "Extravagently expensive metal";
+
+                default:
+                    return "Material Error";
+            }
         }
     }
 }

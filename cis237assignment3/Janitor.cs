@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Andrejs Tomsons
+//CIS 237 Assignment 3
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +23,7 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            JanitorCalculate(this.trashCompactor, this.vacuum);
+            this.totalCost += JanitorCalculate(this.trashCompactor, this.vacuum);
             base.CalculateTotalCost();
         }
 
@@ -28,21 +31,22 @@ namespace cis237assignment3
         {
             double temp = 0;
             if (trashCompactor)
-                temp += 1;
+                temp += 100;
             if (vacuum)
-                temp += 1;
+                temp += 100;
             return temp;
         }
 
-        public override string ToString()
+        public override string ToString()   //Adds to the description the features that the janitor droid has
         {
-            string tempString = base.ToString();
+            string tempString = base.ToString();    //go up a class first
             if (this.trashCompactor || this.vacuum)
-                tempString += Environment.NewLine + "Janitor Features:";
+                tempString += Environment.NewLine + "----Janitor-Features----" + Environment.NewLine;
             if (this.trashCompactor)
-                tempString += " trash compactor";
+                tempString += " trash compactor" + Environment.NewLine;
             if (this.vacuum)
-                tempString += " vacuum";
+                tempString += " vacuum" + Environment.NewLine;
+            
             return tempString;
         }
     }

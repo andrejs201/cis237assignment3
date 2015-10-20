@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Andrejs Tomsons
+//CIS 237 Assignment 3
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +23,7 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            AstromechCalculate(this.fireExtinguisher, this.numberShips);
+            this.totalCost += AstromechCalculate(this.fireExtinguisher, this.numberShips);
             base.CalculateTotalCost();
         }
 
@@ -28,18 +31,18 @@ namespace cis237assignment3
         {
             double temp = 0;
             if (fireExtinguisher)
-                temp += 1;
-            temp += this.numberShips;
+                temp += 100;
+            temp += this.numberShips * 100.0;
             return temp;
         }
 
-        public override string ToString()
+        public override string ToString()   //Adds to the description the features that the astromech droid has
         {
-            string tempString = base.ToString();
-            tempString += Environment.NewLine + "Astromech Features:";
+            string tempString = base.ToString();    //go up a class first
+            tempString += Environment.NewLine + "---Astromech-Features---" + Environment.NewLine;
             if (this.fireExtinguisher)
-                tempString += " fire extinguisher";
-            tempString += " number of ships: " + this.numberShips;
+                tempString += " fire extinguisher" + Environment.NewLine;
+            tempString += " number of ships: " + this.numberShips + Environment.NewLine;
             return tempString;
         }
     }

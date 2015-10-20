@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Andrejs Tomsons
+//CIS 237 Assignment 3
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,33 +25,36 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            totalCost += UtilityCalculate(this.toolbox, this.computerConnection, this.arm);
+            this.totalCost += UtilityCalculate(this.toolbox, this.computerConnection, this.arm);
             base.CalculateBaseCost(this.material);
+            totalCost += baseCost;
         }
 
-        private double UtilityCalculate(bool toolBox, bool computerConnection, bool arm)
+        private double UtilityCalculate(bool toolBox, bool computerConnection, bool arm)    //returns totalCost based on features
         {
             double temp = 0;
             if (toolBox)
-                temp += 1;
+                temp += 100;
             if (computerConnection)
-                temp += 1;
+                temp += 100;
             if (arm)
-                temp += 1;
+                temp += 100;
             return temp;
         }
 
-        public override string ToString()
+        public override string ToString()   //Adds to the description the features that the utility droid has
         {
-            string tempString = base.ToString();
+            string tempString = base.ToString();    //go up a class first
             if (this.toolbox || this.computerConnection || this.arm)
-                tempString += Environment.NewLine + "Features:";
+                tempString += Environment.NewLine + "----Utility-Features----" + Environment.NewLine;
             if (this.toolbox)
-                tempString += " toolbox";
+                tempString += " toolbox" + Environment.NewLine;
             if (this.computerConnection)
-                tempString += " computer connection";
+                tempString += " computer connection" + Environment.NewLine;
             if (this.arm)
-                tempString += " computer screen";
+                tempString += " computer screen" + Environment.NewLine;
+            if (this.toolbox || this.computerConnection || this.arm)
+                tempString += "------------------------";
             return tempString;
         }
     }
