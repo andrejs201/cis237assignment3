@@ -42,7 +42,7 @@ namespace cis237assignment3
                             break;
 
                         case 1:     //Add droid
-                            AddDroid();
+                            AddDroid(dc, ui);
                             break;
 
                         case 2:     //print droid list
@@ -60,11 +60,11 @@ namespace cis237assignment3
             
         }
 
-        private static void AddDroid()
+        private static void AddDroid(DroidCollecion droidCollection, UserInterface userInterface)
         {
             //istantiate variables
-            DroidCollecion dc = new DroidCollecion();
-            UserInterface ui = new UserInterface();
+            DroidCollecion dc = droidCollection;
+            UserInterface ui = userInterface;
             IDroid droid = null;
             string droidMaterial;
             string droidColor;
@@ -87,43 +87,51 @@ namespace cis237assignment3
                 ui.DroidType();
                 droidType = ui.ReadLine();
 
-                if (droidType.ToLower() == "astromech") //astromech path
+                if (droidType == "Astromech") //astromech path
                 {
+                    //utility variables
                     ui.ToolBoxAsk();
                     droidToolBox = Convert.ToBoolean(ui.ReadLine());
                     ui.ComputerConnectionAsk();
                     droidComputerConnection = Convert.ToBoolean(ui.ReadLine());
                     ui.ArmAsk();
                     droidArm = Convert.ToBoolean(ui.ReadLine());
+                    //Astromech variables
                     ui.FireExtinguisher();
                     droidFireExtingusher = Convert.ToBoolean(ui.ReadLine());
                     ui.NumberShips();
                     droidNumberShips = Convert.ToInt32(ui.ReadLine());
+                    //create new astromech in the droid variable
                     droid = new Astromech(droidMaterial, droidType, droidColor, droidToolBox, droidComputerConnection, droidArm, droidFireExtingusher, droidNumberShips);
                 }
-                else if (droidType.ToLower() == "janitor")  //janitor path
+                else if (droidType == "Janitor")  //janitor path
                 {
+                    //Utitlity variables
                     ui.ToolBoxAsk();
                     droidToolBox = Convert.ToBoolean(ui.ReadLine());
                     ui.ComputerConnectionAsk();
                     droidComputerConnection = Convert.ToBoolean(ui.ReadLine());
                     ui.ArmAsk();
                     droidArm = Convert.ToBoolean(ui.ReadLine());
+                    //Janitor variables
                     ui.TrashCompactor();
                     droidTrashCompactor = Convert.ToBoolean(ui.ReadLine());
                     ui.Vacuum();
                     droidVacuum = Convert.ToBoolean(ui.ReadLine());
+                    //Create new janitor in the droid variable
                     droid = new Janitor(droidMaterial, droidType, droidColor, droidToolBox, droidComputerConnection, droidArm, droidTrashCompactor, droidVacuum);
                 }
-                else if (droidType.ToLower() == "protocol") //protocol path
+                else if (droidType == "Protocol") //protocol path
                 {
+                    //Protocol variables
                     ui.DroidLanguages();
                     droidNumberLanguages = Convert.ToInt32(ui.ReadLine());
+                    //create new Protocol droid in the droid variable
                     droid = new Protocol(droidMaterial, droidType, droidColor, droidNumberLanguages);
                 }
                 else
                 {
-                    ui.DroidTypeError();    
+                    ui.DroidTypeError();    //output type error message
                 }
             }
             catch

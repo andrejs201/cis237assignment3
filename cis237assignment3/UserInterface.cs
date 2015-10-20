@@ -47,7 +47,7 @@ namespace cis237assignment3
 
         public void DroidType()
         {
-            Print("What is the droids type? Astromech, Janitor, or Protocol?");
+            Print("What is the droid's type? Astromech, Janitor, or Protocol?");
         }
 
         public void DroidMaterial()
@@ -104,7 +104,7 @@ namespace cis237assignment3
         public void TrashCompactor()
         {
             Ask();
-            Console.WriteLine("Does the droid have a trach compactor?");
+            Console.WriteLine("Does the droid have a trash compactor?");
         }
 
         public void Vacuum()
@@ -115,7 +115,7 @@ namespace cis237assignment3
 
         public void DroidTypeError()
         {
-            Print("Droid type not found try again.");
+            Print("Droid type not found, try again.");
         }
 
         public void DroidAdded()
